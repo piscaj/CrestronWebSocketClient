@@ -18,8 +18,8 @@ namespace WebSocket
     public class MyWebSocket
     {
         public WebSocketClient myWSC = new WebSocketClient();
-        public WebSocketClient.WEBSOCKET_RESULT_CODES ret;
-        public WebSocketClient.WEBSOCKET_PACKET_TYPES opcode;
+        public WebSocketClient.WEBSOCKET_RESULT_CODES rCode;
+        public WebSocketClient.WEBSOCKET_PACKET_TYPES pType;
         public byte[] SendData = new byte[6];
         public byte[] ReceiveData;
         WebSocketClient.WEBSOCKET_RESULT_CODES error;
@@ -60,8 +60,8 @@ namespace WebSocket
             try
             {
                 SendData = System.Text.Encoding.ASCII.GetBytes(data);
-                ret = (WebSocketClient.WEBSOCKET_RESULT_CODES)myWSC.Send(SendData, (uint)SendData.Length, WebSocketClient.WEBSOCKET_PACKET_TYPES.LWS_WS_OPCODE_07__TEXT_FRAME, WebSocketClient.WEBSOCKET_PACKET_SEGMENT_CONTROL.WEBSOCKET_CLIENT_PACKET_END);
-                myWSC.Receive(out ReceiveData, out opcode);
+                rCode = (WebSocketClient.WEBSOCKET_RESULT_CODES)myWSC.Send(SendData, (uint)SendData.Length, WebSocketClient.WEBSOCKET_PACKET_TYPES.LWS_WS_OPCODE_07__TEXT_FRAME, WebSocketClient.WEBSOCKET_PACKET_SEGMENT_CONTROL.WEBSOCKET_CLIENT_PACKET_END);
+                myWSC.Receive(out ReceiveData, out pType);
                 if (ReceiveData != null)
                 {
                     CrestronConsole.Print("Data received after performing send: \r\n");

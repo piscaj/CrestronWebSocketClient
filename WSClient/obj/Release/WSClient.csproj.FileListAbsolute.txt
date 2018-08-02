@@ -1,0 +1,5 @@
+C:\Crestron\Simpl\usrSIMPL#\WSClient\WSClient\bin\Release\WSClient.dll
+C:\Crestron\Simpl\usrSIMPL#\WSClient\WSClient\bin\Release\SimplSharpCustomAttributesInterface.dll
+C:\Crestron\Simpl\usrSIMPL#\WSClient\WSClient\bin\Release\SimplSharpHelperInterface.dll
+C:\Crestron\Simpl\usrSIMPL#\WSClient\WSClient\obj\Release\ResolveAssemblyReference.cache
+C:\Crestron\Simpl\usrSIMPL#\WSClient\WSClient\obj\Release\WSClient.dll

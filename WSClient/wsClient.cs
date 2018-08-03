@@ -20,8 +20,8 @@ namespace WebSocket
         public WebSocketClient myWSC = new WebSocketClient();
         public WebSocketClient.WEBSOCKET_RESULT_CODES rCode;
         public WebSocketClient.WEBSOCKET_PACKET_TYPES pType;
-        public byte[] SendData = new byte[6];
-        public byte[] ReceiveData;
+        public byte[] sendData;
+        public byte[] receiveData;
         WebSocketClient.WEBSOCKET_RESULT_CODES error;
 
         public SendDigitalAnalogData UpdateSocketStatus { get; set; }
@@ -59,13 +59,13 @@ namespace WebSocket
         {
             try
             {
-                SendData = System.Text.Encoding.ASCII.GetBytes(data);
-                rCode = (WebSocketClient.WEBSOCKET_RESULT_CODES)myWSC.Send(SendData, (uint)SendData.Length, WebSocketClient.WEBSOCKET_PACKET_TYPES.LWS_WS_OPCODE_07__TEXT_FRAME, WebSocketClient.WEBSOCKET_PACKET_SEGMENT_CONTROL.WEBSOCKET_CLIENT_PACKET_END);
-                myWSC.Receive(out ReceiveData, out pType);
-                if (ReceiveData != null)
+                sendData = System.Text.Encoding.ASCII.GetBytes(data);
+                rCode = (WebSocketClient.WEBSOCKET_RESULT_CODES)myWSC.Send(sendData, (uint)sendData.Length, WebSocketClient.WEBSOCKET_PACKET_TYPES.LWS_WS_OPCODE_07__TEXT_FRAME, WebSocketClient.WEBSOCKET_PACKET_SEGMENT_CONTROL.WEBSOCKET_CLIENT_PACKET_END);
+                myWSC.Receive(out receiveData, out pType);
+                if (receiveData != null)
                 {
                     CrestronConsole.Print("Data received after performing send: \r\n");
-                    foreach (byte b in ReceiveData)
+                    foreach (byte b in receiveData)
                     {
                         CrestronConsole.Print(System.Convert.ToChar(b)+"");
                     }
